@@ -6,38 +6,46 @@ use Illuminate\Http\Request;
 
 class MemberController extends Controller
 {
-      public function index()
+    private array $members = [
+        ['id' => 1, 'nama' => 'Siti Aminah', 'nim' => '2310501001', 'email' => 'siti.aminah@pens.ac.id', 'nomor_telepon' => '081234567890', 'status' => 'aktif'],
+        ['id' => 2, 'nama' => 'Budi Santoso', 'nim' => '2310501002', 'email' => 'budi.santoso@pens.ac.id', 'nomor_telepon' => '081298765432', 'status' => 'aktif'],
+        ['id' => 3, 'nama' => 'Dewi Lestari', 'nim' => '2310501003', 'email' => 'dewi.lestari@pens.ac.id', 'nomor_telepon' => '081211122233', 'status' => 'nonaktif'],
+    ];
+
+    public function index()
     {
-        return 'BookController@index';
+        $members = $this->members;
+
+        return view('members.index', compact('members'));
     }
 
     public function create()
     {
-        return 'BookController@create';
+        return 'MemberController@create';
     }
 
     public function store(Request $request)
     {
-        return 'BookController@store';
+        return 'MemberController@store';
     }
 
     public function show(string $id)
     {
-        return "BookController@show, id: {$id}";
+        return "MemberController@show, id: {$id}";
     }
 
     public function edit(string $id)
     {
-        return "BookController@edit, id: {$id}";
+        return "MemberController@edit, id: {$id}";
     }
 
     public function update(Request $request, string $id)
     {
-        return "BookController@update, id: {$id}";
+        return "MemberController@update, id: {$id}";
     }
 
     public function destroy(string $id)
     {
-        return "BookController@destroy, id: {$id}";
+        return "MemberController@destroy, id: {$id}";
     }
 }
