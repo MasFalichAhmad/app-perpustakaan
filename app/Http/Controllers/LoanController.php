@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class LoanController extends Controller
 {
-      public function index()
+    public function index()
     {
         return 'BookController@index';
     }
