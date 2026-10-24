@@ -22,4 +22,5 @@ class MemberController extends Controller
 
         return new MemberResource($member);
     }
+
 }
