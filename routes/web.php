@@ -1,17 +1,17 @@
+
 <?php
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\MemberController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 
 // Halaman utama
-Route::get('/', function () {
-    return redirect()->route('books.index');
-});
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 // Login dan logout
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('books', BookController::class);
     Route::resource('members', MemberController::class);
+    Route::get('/loans/report', [LoanController::class, 'report'])->name('loans.report');
     Route::resource('loans', LoanController::class);
 
     Route::put('/loans/{id}/kembalikan', [LoanController::class, 'kembalikan'])
@@ -42,7 +43,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::get('/profil', [ProfileController::class, 'show'])
-    ->name('profile.show');
+        ->name('profile.show');
 
     Route::put('/profil/password', [ProfileController::class, 'updatePassword'])
         ->name('profile.password');
