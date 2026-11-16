@@ -1,4 +1,3 @@
-<!-- File: resources/views/loans/report.blade.php -->
 @extends('layouts.app')
 
 @section('title', 'Laporan Peminjaman')
@@ -21,6 +20,11 @@
         </thead>
         <tbody>
             @forelse ($loans as $loan)
+                @php
+                    // Menghitung selisih hari dari hari ini ke tanggal kembali
+                    $tglKembali = \Carbon\Carbon::parse($loan['tanggal_kembali']);
+                    $selisihHari = now()->startOfDay()->diffInDays($tglKembali, false);
+                @endphp
                 <tr>
                     <td>{{ $loan['id'] }}</td>
                     <td>{{ $loan['member']['nama'] }}</td>
@@ -31,8 +35,29 @@
                         @endforeach
                     </td>
                     <td>{{ $loan['tanggal_pinjam'] }}</td>
-                    <td>{{ $loan['tanggal_kembali'] }}</td>
-                    <td>{{ ucfirst($loan['status']) }}</td>
+                    
+                    {{-- Kolom Tgl Kembali + Peringatan Deadline --}}
+                    <td>
+                        {{ $loan['tanggal_kembali'] }}
+                        @if ($loan['status'] === 'dipinjam')
+                            @if ($selisihHari < 0)
+                                <br><span style="color: #dc2626; font-size: 12px; font-weight: bold;">Terlambat (Lewat {{ abs($selisihHari) }} hari)</span>
+                            @elseif ($selisihHari <= 2)
+                                <br><span style="color: #d97706; font-size: 12px; font-weight: bold;">Deadline {{ $selisihHari === 0 ? 'Hari Ini!' : 'dalam ' . $selisihHari . ' hari' }}</span>
+                            @endif
+                        @endif
+                    </td>
+
+                    {{-- Kolom Status dengan Badge Berwarna --}}
+                    <td>
+                        @if ($loan['status'] === 'dipinjam')
+                            <span style="background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 4px; font-size: 12px;">Dipinjam</span>
+                        @elseif ($loan['status'] === 'terlambat')
+                            <span style="background: #fee2e2; color: #991b1b; padding: 3px 8px; border-radius: 4px; font-size: 12px;">Terlambat</span>
+                        @else
+                            <span style="background: #d1fae5; color: #065f46; padding: 3px 8px; border-radius: 4px; font-size: 12px;">Dikembalikan</span>
+                        @endif
+                    </td>
                 </tr>
             @empty
                 <tr>
