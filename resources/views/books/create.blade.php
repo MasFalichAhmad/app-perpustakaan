@@ -8,7 +8,7 @@
 
     <h1>Tambah Buku</h1>
 
-    <form action="{{ route('books.store') }}" method="POST">
+    <form action="{{ route('books.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div style="margin-bottom: 12px;">
@@ -70,6 +70,14 @@
                 @endforeach
             </select>
             @error('category_id')
+                <div style="color: #b91c1c; font-size: 14px; margin-top: 4px;">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div style="margin-bottom: 16px;">
+            <label for="sampul" style="display: block; font-weight: bold; margin-bottom: 4px;">File Sampul Buku (Opsional)</label>
+            <input type="file" name="sampul" id="sampul" accept="image/*" style="width: 100%; max-width: 500px; padding: 6px;">
+            @error('sampul')
                 <div style="color: #b91c1c; font-size: 14px; margin-top: 4px;">{{ $message }}</div>
             @enderror
         </div>

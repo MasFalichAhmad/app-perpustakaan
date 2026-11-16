@@ -39,6 +39,9 @@ class BookController extends Controller
     {
         $validated = $request->validated();
 
+        if ($request->hasFile('sampul')) {
+                $validated['sampul'] = $request->file('sampul')->store('sampuls', 'public');
+            }
         Book::create($validated);
 
         return redirect()->route('books.index')
@@ -72,8 +75,15 @@ class BookController extends Controller
             'isbn' => 'nullable|string|max:20',
             'stok' => 'required|integer|min:0',
             'category_id' => 'required|integer|exists:categories,id',
+            'sampul' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
+        if ($request->hasFile('sampul')) {
+            if ($book->sampul && \Illuminate\Support\Facades\Storage::disk('public')->exists($book->sampul)) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($book->sampul);
+            }
+            $validated['sampul'] = $request->file('sampul')->store('sampuls', 'public');
+        }
         $book->update($validated);
 
         return redirect()->route('books.index')
