@@ -1,0 +1,471 @@
+{
+  "info": {
+    "_postman_id": "7e88125d-d826-45d8-a7b5-9fc6b35f0173",
+    "name": "app-perpustakaan",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "36174434"
+  },
+  "item": [
+    {
+      "name": "GET Members",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/members",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "members"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Books",
+      "protocolProfileBehavior": {
+        "disableCookies": false,
+        "followRedirects": true,
+        "protocolVersion": "auto",
+        "strictSSL": false
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/books",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "books"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Member Detail",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/members/1",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "members",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Books Filter Judul",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/books?judul=laskar",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "books"
+          ],
+          "query": [
+            {
+              "key": "judul",
+              "value": "laskar"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST Books",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"judul\": \"Buku Uji API\",\r\n    \"penulis\": \"Falich\",\r\n    \"penerbit\": \"Penerbit Uji\",\r\n    \"tahun_terbit\": 2024,\r\n    \"isbn\": \"9786230000001\",\r\n    \"stok\": 5,\r\n    \"category_id\": 4\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/books",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "books"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Book Detail",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/books/1",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "books",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT Books",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"judul\": \"Buku Uji API Updated\",\r\n    \"penulis\": \"Falich\",\r\n    \"penerbit\": \"Penerbit Uji\",\r\n    \"tahun_terbit\": 2024,\r\n    \"isbn\": \"9786230000001\",\r\n    \"stok\": 10,\r\n    \"category_id\": 4\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/books/61",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "books",
+            "61"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE Books",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/books/61",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "books",
+            "61"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Books Filter Judul",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/books?judul=laskar",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "books"
+          ],
+          "query": [
+            {
+              "key": "judul",
+              "value": "laskar"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Books Filter Category",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/books?category_id=4",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "books"
+          ],
+          "query": [
+            {
+              "key": "category_id",
+              "value": "4"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Loans",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/loans",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "loans"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST Loans",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"member_id\": 1,\r\n    \"user_id\": 2,\r\n    \"tanggal_pinjam\": \"2026-11-08\",\r\n    \"tanggal_kembali\": \"2026-11-15\",\r\n    \"book_ids\": [1]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/loans",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "loans"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT Loans",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/loans/2/kembalikan",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "loans",
+            "2",
+            "kembalikan"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Stats",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/stats",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "stats"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
