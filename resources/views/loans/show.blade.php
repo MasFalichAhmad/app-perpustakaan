@@ -29,7 +29,15 @@
         </tr>
         <tr>
             <th style="background:#f3f4f6;">Status</th>
-            <td>{{ ucfirst($loan['status']) }}</td>
+            <td>
+                @if ($loan['status'] === 'dikembalikan')
+                    <span class="badge badge-dikembalikan">Dikembalikan</span>
+                @elseif ($loan['status'] === 'terlambat')
+                    <span class="badge badge-terlambat">Terlambat</span>
+                @else
+                    <span class="badge badge-dipinjam">Dipinjam</span>
+                @endif
+            </td>
         </tr>
     </table>
 
